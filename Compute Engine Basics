@@ -1,0 +1,18 @@
+Basic VM Creation Commands and Parameters
+gcloud compute instances create NAME
+
+Example: gcloud compute instances create instance-1
+
+Useful Flags:
+--zone
+  -Zone of the instances to create.
+  EX: --zone us-central1-a
+--network
+  -Specifies the network that the VM instances are a part of.
+  EX: --network test-network
+--machine-type
+  -Specifies the machine type used for the instances.
+  EX: --machine-type n1-standard-1
+--no-service-account
+  -Create instance without service account
+  -You need to put the --no-scopes flag before using this flag.
