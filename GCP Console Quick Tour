@@ -1,0 +1,21 @@
+Quick GCP Console Guide
+
+LAUNCHING GCP CONSOLE
+Go to: https://console.google.cloud.com
+Enter username and password
+Accept the terms of service by clicking "I understand"
+Select the country you are in and accept the Google Cloud terms of service before clicking "Agree and Continue"
+From the top bar, click on the dropdown to select a project
+Click on the desired project that is listed
+
+TOURING GCP CONSOLE
+Now logged in and project selected, you are on the Project home page
+Click the hamburger in the top left corner
+Listed are common GCP services, scroll down to see the "More products" section
+In the left tab, there are a variety of services
+Scroll around to see all the services
+
+PINNING/UNPINNING SERVICES
+Click the unpin icon from the pinned services to remove it from the top
+Scroll down and click "More products"
+Click on the pin icon to move it to the top of your services
