@@ -1,0 +1,30 @@
+CREATING A FIREWALL
+Click the hamburger icon in the top left corner
+Click VP Network under the Networking section
+Click on Firewall from the left panel
+Click "CREATE A FIREWALL RULE"
+
+ALLOW ALL EGRESS TRAFFIC
+Enter the name of the firewall
+Select Logs to be on or off
+Select the VPN Network (ex: default)
+Enter a priority number.  The higher the number, the bigger the priority
+Select egress under the direction of traffic section.
+Select action on matching rule (Allow or Deny)
+Select targets (All instances in network)
+Enter destination IP ranges (0.0.0.0/0 means all traffic)
+Select the ports (Allow all for allowing all egress traffic)
+Click Create
+
+ALLOW INGRESS SSH TRAFFIC
+Enter the name of the firewall
+Select Logs to be on or off (OFF)
+Select the VPN Network (ex: default)
+Enter a priority number.  The higher the number, the bigger the priority
+Select ingress under the direction of traffic
+Select targets (All instances in network)
+Enter destination IP addresses (0.0.0.0/0 for all traffic)
+Under protocols and ports, select Specified portocols and ports
+Select TCP
+Enter 22 (SSH Port) next to TCP
+Click Create
