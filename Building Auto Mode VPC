@@ -1,0 +1,37 @@
+CREATING A VPC USING AUTO SUBNET CREATION MODE
+Click the navigation menu in the top left corner
+Scroll down and click "VPC Network"
+Click "Create VPC Network"
+Enter the name of your VPC
+Enter the description
+Select the subnet creation mode, choose "Automatic"
+Select the rule named VPC_NAME-allow-ssh. This allows SSH into the network.  All outbound traffic is allowed by default.
+Select the dynamic routing mode, choose "Regional."  In the Regional mode, routes learned by the Cloud Router only apply to the subnets existing in the same region in which Cloud Router exists.
+Click "Create"
+Wait for the VPC to be created
+
+CREATING A VM AND TRYING TO SSH INTO IT
+Click the navigation menu in the top left corner
+Scroll down and click "Compute Engine"
+Click on "Create Instance"
+Enter the VM name
+Select the region and the zone
+In the Machine Configuration section, choose the machine series
+Select the machine type.  A recommended machine for testing is n1-standard-1
+Under the "Identity and API Access," choose "No service account"
+Click the arrow next to "Advanced Options" to expand
+Click the arrow next to "Networking" to expand
+Under "Network Interfaces," click the arrow next to "default" to expand
+From the dropdown menu, choose the VPC network originally created
+Click "Create"
+Click SSH next to the VM once the instance is created
+Enter the command: "gcloud auth login --no-launch-browser -q"
+Copy the URL in the output
+Paste it in a new browser and login
+Click allow to give access to Google Cloud SDK
+Copy the authorizaiton code and switch back to the SSH window
+Enter the authorization code and click Enter
+You will see output showing you are now logged into the machine, now on the VPC
+Use the command "ping" to ping a website like google.com
+If you recieve response packets, you have succeeded
+Click CTRL+C to stop pinging
