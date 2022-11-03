@@ -1,1 +1,59 @@
 CREATING A VPC USING CUSTOM-MODE
+Click on the Navigation Menu in the top left corner
+Scroll down and click on 'VPC Network'
+Click "CREATE VPC NETWORK"
+Enter the name of your VPC
+Enter the description of your VPC
+Chooce the 'Subnet creation mode' as Custom
+Enter the name of the subnet
+Select the region of the subnet
+Choose the IP stack type as IPv4 and enter an address range
+Turn on Private Google Access
+Turn off Flow Logs
+Click DONE
+Select Regional for Dynamic routing mode
+Click Create
+Wait until the VPC is created
+
+CREATING A FIREWALL
+Click Firewall in the navigation menu
+Click CREATE FIREWALL RULE
+Enter the firewall rule name
+Turn off Logs
+Choose the network as the VPC you created above
+Choose the priority number, make sure it is higher than any other previous rules created
+Choose Ingress for Direction of traffic
+Choose Allow for Action on match
+Choose All instances in the network for Targets
+Enter the Source IP range as 0.0.0.0/0 (All traffic)
+Choose Specified protocols and ports
+Select TCP and enter port 22 under Ports
+Click Create
+
+CREATING A VM AND SSHING INTO IT
+Click the Navigation Menu
+Click on Compute Engine
+Click CREATE INSTANCE
+Enter the name of your instance
+Keep the region the same as the subnet you created earlier
+Choose the series of the machine (n1-standard-1 for test machines)
+Under Identity and API Access, choose the custom service account (should be similar to your login)
+Expand the Advanced Options by clicking on the arrow next to it
+Expand the Networking by clicking on the arrow next to it
+Under Network Interrfaces, expand the default by clicking the arrow next to it
+Choose the network as the VPC you created earlier
+Click on External IP and choose None
+Click Done
+Click Create
+Once the instance is created, click SSH next to it
+Click connect if prompted with a message
+Wait until the window is loaded
+Enter the command "gcloud auth login --no-launch-browser -q" into the shell
+You will recieve a URL in the output, copy it
+Paste it into a new tab in your web browser and login with your credentials
+Click allow to give access to Google Cloud SDK
+You will recieve an Authorization Code, copy the code and go back to the SSH
+Enter the code and click enter
+You will receive an output saying you have logged in
+Enter the command "gcloud compute networks list"
+Your output should be the default network and the custom network you created
