@@ -1,0 +1,27 @@
+CREATING A VM INSTANCE
+Click the Navigation menu in the top left corner
+In the left sidebar, click on Compute Engine
+On top, click CREATE INSTANCE
+Enter the name
+Select the region and zone
+In Machine configuration, choose series
+Select the machine type
+Click on CHANGE under boot disk to choose the Operating system
+Choose Operating system
+Choose the Version
+Choose the Boot disk type
+Choose the Size (10GB)
+Click on SELECT
+Under Identity and API Access, choose Service account from the drop down menu
+Click CREATE
+Once the instance is up and running, click on SSH.
+A new window will open where you can type on commands
+Enter "sudo apt-get update" to update all the libraries
+Enter "sudo apt-get install xrdp" to install the RDP dependencies
+If prompted to confirm, type "Y" and press Enter
+Enter "sudo service xrdp restart" to restart the RDP service
+Enter "sudo -s" to switch to the root user
+Enter "passwd" to connfigure the password
+Choose any password, it will be needed to log into the VM
+Retype to confirm the password
+The password is now updated successfully
