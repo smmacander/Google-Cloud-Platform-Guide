@@ -1,0 +1,42 @@
+CREATING SIMPLE APPLICATION USING CLOUD RUN
+Click on the Navigation menu in the top left corner
+Click on Cloud Run
+Click on Activate Cloud Shell in the top right corner
+The Cloud Shell window will activate at the bottom of your screen
+Enter the command "mkdir DIRECTORY_NAME" to create a directory
+Enter the command "cd DIRECTORY_NAME" to change the directory to your created directory
+Enter the command "nano app.py" to open a text editor to enter the code of your application
+Enter the below code which includes parameters.  Whatever parameter you pass in the URL will be printed like "Hello <parameter>!"
+  A default message "Hello Friend of Sean" will be printed without a parameter
+  After writing, press CTRL+O and then Enter to save, and CTRL+X to exit the editor:
+  CODE:
+  from flask import Flask,request
+  app = Flask(__name__)
+  @app.route('/', methods=['GET'])
+  def hello():
+    """Passing parameters below."""
+    who=request.args.get('who','Whizlabs')
+    return f'Hello {who}!\n'
+Enter "nano Dockerfile" to create a Dockerfile and open it in a text editor
+Enter the below in the Dockerfile, comments optional  
+  After entering the code, press CTRL+O to save, Enter, and CTRL+X to exit the editor
+  CODE:
+  FROM python:3.7-slim
+  # Installing dependencies.
+  RUN pip install Flask gunicorn
+  # Copy local code to the container image.
+  WORKDIR /app
+  COPY . .
+  # To Run the web service on container startup. Here we use the gunicorn
+  CMD exec gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0 app:app
+Enter the command "gcloud builds submit --tag gcr.io/<Project-ID>/<Your-Image> --gcs-log-dir=gs://<Project-ID>_cloudbuild/run" to create your Container image.
+ If prompted to Authorizae, click on Authorize.
+You should see a success message, which means your image is successfully created.
+Now, deploy your image using the command "gcloud run deploy --image=gcr.io/<project_id>/<your_image> --platform managed --region us-central1 --allow-unauthenticated cloudrun-service"
+You will receive a Service URL as the output.  Copy the Service URL
+Enter the command "curl <url>" with the Service URL replacing the url
+You will receive "Hello Friend of Sean!" as an output
+You can enter a parameter with "curl <url>/?who=<parameter>"
+  Whatever you enter as the parameter will appear like "Hello <parameter>!"
+  The parameter can be anything
+Refresh the page in the cloud console. Your new service will appear here.
