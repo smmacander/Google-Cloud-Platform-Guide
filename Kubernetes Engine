@@ -38,3 +38,11 @@ Enter the below code in the Dockerfile.  You can ignore the comments which are f
   ENV PORT 8080
   # To Run the web service on container startup. Here we use the gunicorn
   CMD exec gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0 app:app
+Enter "docker build -t gcr.io/${project_id}/<app_name> ." to create your Docker image (the dot at the end of the command specifies the current directory).
+  Replace the <app_name> with your App name. Make a note of the name as it will be used in future steps.
+Enter "gcloud auth configure-docker" to authorize docker CLI.
+If prompted to authorize, click Authorize.
+Enter "docker push gcr.io/${project_id}/<app_name>" to push the docker image to the container registry. 
+  Replace the <app_name> with the app name that you chose before.
+Output should finish with a size.
+
