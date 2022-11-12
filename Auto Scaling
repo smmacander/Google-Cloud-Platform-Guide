@@ -1,0 +1,61 @@
+CREATING A FIREWALL RULE
+Click on the Navigation menu in the top-left corner
+In the left sidebar, scroll down and click on the VPC network.
+In the left sidebar, click on Firewall.
+On top, click on CREATE FIREWALL RULE. (If you don't see the CREATE FIREWALL RULE button, you will see a Kebab menu i.e. three vertical dots. Click on it.
+  Then, click on CREATE FIREWALL RULE).
+Enter the firewall rule name like http-allow.
+Turn off the lofs.
+Choose the network as the default.
+Enter the priority number as 1000.
+Choose the direction as Ingress, as we are allowing all incoming HTTP traffic.
+Choose Allow, as we want to allow the incoming traffic.
+Choose the target as All instances in the network.  The same rule will apply to all instances in the network.
+Enter the Source IP range as 0.0.0.0/0, which means all traffic.
+Enter the port as 80, and check TCP, as we are allowing HTTP traffic. The HTTP port is 80.
+Click on CREATE to create the firewall rule.
+
+CREATING AN INSTANCE TEMPLATE
+Click on the Navigation menu in the top-left corner.
+In the left sidebar, click on Compute Engine.
+In the left sidebar, click on Instance Templates.
+Click on CREATE INSTANCE TEMPLATE.
+Enter the name of your instance template like my-instance-template.
+In the Machine configuration, choose the series as N1.
+Make sure the machine type is n1-standard-1. Do not select any other option, as they are more expensive.
+Under Identity and API access, choose No service account from the drop-down menu.
+Click on the down arrow to expand the Advanced options.
+Expand the Management tab.
+In the Automation section, paste the startup script as given below.
+  CODE:
+  #! /bin/bash
+  apt-get update -y
+  apt-get install apache2 -y
+  apt-get install php7.0 -y
+  mv /var/www/html/index.html /var/www/html/index.php
+  cat <<EOF > /var/www/html/index.php
+  <html><body><h2>Hello World!</h2>
+  </body></html>
+  EOF
+Keep the other options as is.
+Click on CREATE to finally create your instance template.
+You can now see the created instance template.
+
+CREATING AN INSTANCE GROUP
+In the left sidebar, click on Instance groups.
+Click on CREATE INSTANCE GROUP.
+Enter the name of your instance group like my-instance-group.
+Choose your instance template which you created in the previous steps.
+Keep the location configuration as is.  In real-time, you should always choose Multiple zones to achieve high availability.
+Keep the Auto-scaling mode as is.
+Keep the Minimum number of instances as 1, and change the Maximum number of instances to 2.
+Expand the Autoscaling metrics secton.
+Expand the CPU utilisation section.
+Keep the Metric type as CPU utilisation and Target CPU utilisation as 80, which means once your CPU utilization goes above 80%, new instances should add up.
+Click on DONE.
+Click on CREATE.
+You can now see your instance group listed.
+Navigate to the VM instances from the left sidebar menu.
+You can see your VM instance created automatically from the instance group with configuration done in the instance template.
+Copy the External IP using the copy button next to the external IP.
+Paste the external IP in a new browser tab to get the output "Hello World!"
