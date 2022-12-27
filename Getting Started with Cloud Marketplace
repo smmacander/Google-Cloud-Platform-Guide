@@ -1,0 +1,24 @@
+Task 1. Use Cloud Marketplace to deploy a LAMP stack
+     1. In the Google Cloud Console, on the Navigation menu, click Marketplace.
+     2. In the search bar, type LAMP and then press ENTER.
+     3. In the search results, click LAMP Packaged by Bitnami.
+     4. On the LAMP page, click Launch.
+     5. For Zone, select the default zone given.
+     6. Leave the remaining settings as their defaults.
+     7. If you are prompted to accept the GCP MArketplace Terms of Service, do so.
+     8. Click Deploy.
+     9. If a Welcome to Deployment Manager message appears, click Close to dismiss it.
+Task 2. Verify your deployment
+     1. When the deployment is complete, click the Site address link in the right pane.
+     2. Close the congratulations browser tab.
+     3. On the Google Cloud Console, under Get started with LAMP Packaged by Bitname, click SSH.
+     4. In the SSH window, to change the current working directory to '/opt/bitnami', execute the following command:
+        cd /opt/bitnami/
+     5. To copy the phpinfo.php script from the installation directory to a publically accessible location under the web server document root, execute the following command:
+        sudo sh -c 'echo "<?php phpinfo(); ?>" > apache2/htdocs/phpinfo.php'
+     6. To close the SSH window, execute the following command:
+        exit
+     7. Open a new browser tab.
+     8. Type the following URL, and replace 'SITE_ADDRESS' with the URL in the Site address field in the right pane of the lampstack page.
+        http://SITE_ADDRESS/phpinfo.php
+     9. Close the phpinfo tab.
