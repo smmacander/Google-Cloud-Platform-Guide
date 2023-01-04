@@ -1,0 +1,98 @@
+Task 1. Explore the default network
+  Delete the Firewall rules
+  1. In the left pane, click firewall.
+  2. Select all default network firewall rules.
+  3. Click Delete.
+  4. Click Delete to confirm the deletion of the firewall rules
+  Delete the default network
+  1. In the left pane, click VPC networks.
+  2. Select the default network.
+  3. Click Delete VPC network.
+  4. Click Delete to confirm the deletion of the default network.
+     Wait for the network to be deleted before continuing.
+  5. In the left pane, click Routes.
+     Notice that there are no routes.
+  6. In the left pane, click Firewall.
+     Notice that there are no firewall rules.
+  Try to create a VM instance
+  1. On the navigation menu, click Compute Engine > VM instances.
+  2. Click Create instance.
+  3. Accept the default values and click Create.
+     Notice the error.
+  4. Click Management, security, disks, networking, sole tenancy.
+  5. Click Networking.
+     Notice the No local network available error under Network interfaces.
+  6. Click Cancel.
+Task 2. Create a VPC network and VM instances
+  Create an auto mode VPC network with Firewall rules
+  1. On the Navigation menu, click VPC network > VPC networks.
+  2. Click Create VPC network.
+  3. For Name, type mynetwork.
+  4. For Subnet creation mode, click Automatic.
+     Auto mode networks create subnets in each region automatically.
+  5. For Firewall, select all available rules.
+     These are the same standard firewall rules that the default network had.
+     The deny-all-ingress and allow-all-egress rules are also displayed, but you cannot check or uncheck them because they are implied.
+     These two rules have a lower Priority (higher integers indicate lower priorities) so that the allow ICMP, custom, RDP and SSH rules are considered first.
+  6. Click Create.
+     When the new network is ready, notice that a subnet was created for each region.
+  7. Explore the IP address range for the subnets in us-west1 and europe-central2.
+  Create a VM instance in uswest-1.
+  1. On the Navigation menu, click Compute Engine > VM instances.
+  2. Click Create instance.
+  3. Specify the following, and leace the remaining settings as their defaults:
+     Name: mynet-us-vm
+     Region: uswest-1
+     Zone: us-west1-a
+     Series: E2
+     Machine type: e2-micro (2 vCPU, 1 GB memory)
+  4. Click Create.
+  Create a VM instance in europe-central2
+  1. Click Create instance.
+  2. Specify the following and leave the remaining settings as their defaults:
+     Name: mynet-eu-vm
+     Region: europe-central2
+     Zone: europe-central2-a
+     Series: E2
+     Machine type: e2-micro (2 vCPU, 1 GB memory)
+  3. Click Create
+Task 3. Explore the connectivity for VM instances  
+  Verify connectivity for the VM instances
+  1. On the Navigation menu, click Compute Engine > VM instances.
+     Note the external and internal IP addresses for mynet-eu-vm.
+  2. For mynet-us-vm, click SSH to launch a terminal and connect.
+  3. To test connectivity to mynet-eu-vm's internal IP, run the following command, replacing mynet-eu-vm's internal IP:
+     "ping -c 3 <Enter mynet-eu-vm's internal IP here>'
+  4. To test connectivity to mynet-eu-vm's external IP, run the following command, replacing mynet-eu-vm's external IP:
+     "ping -c 3 <Enter mynet-eu-vm's external IP here>'
+  Remove the allow-icmp firewall rules
+  1. On the Navigation menu, click VPC network > Firewall.
+  2. Select the mynetwork-allow-icmp rule.
+  3. Click Delete.
+  4. Click Delete to confirm the deletion.
+     Wait for the firewall rule to be deleted.
+  5. Return to the mynet-us-vm SSH terminal.
+  6. To test connectivity to mynet-eu-vm's internal IP, run the following command, replacing mynet-eu-vm's internal IP:
+     'ping -c 3 <Enter mynet-eu-vm's internal IP here>'
+  7. To test connectivity to mynet-eu-vm's external IP, run the following command, replacing mynet-eu-vm's external IP:
+     'ping -c 3 <Enter mynet-eu-vm's external IP here>'
+  Remove the allow-custom firewall rules
+  1. On the Navigation menu, click VPC network > Firewall.
+  2. Select the mynetwork-allow-custom rule.
+  3. Click Delete.
+  4. Click Delete to confirm the deletion.
+     Wait for the firewall rule to be deleted.
+  5. Return to the mynet-us-vm SSH terminal.
+  6. To test connectivity to mynet-eu-vm's internal IP, run the following command, replacing mynet-eu-vm's internal IP:
+     'ping -c 3 <Enter mynet-eu-vm's internal IP here>'
+  7. Close the SSH terminal:
+     'exit'
+  Remove the allow-ssh firewall rules
+  1. On the Navigation menu, click VPC network > Firewall.
+  2. Select the mynetwork-allow-ssh rule.
+  3. Click Delete.
+  4. Click Delete to confirm the deletion.
+  5. Wait for the firewall rule to be deleted.
+  6. On the Navigation menu, click Compute Engine > VM instances.
+  7. For mynet-us-vm, click SSH to launch a terminal and connect.
+  
