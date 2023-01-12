@@ -1,0 +1,8 @@
+Task 1. Verifying Terraform installation
+- Open a new Cloud Shell tab, and verify that Terraform is available:
+  "terraform"
+Task 2. Build Infrastructure
+1. In Cloud Shell, create an empty configuration file named instance.tf with the following command:
+  "touch instance.tf"
+2. Click Open Editor on the Cloud Shell toolbar.
+3. Click the instance.tf file and add the necessary content in it.  There is a sample .tf file located in the folder in this respository.
