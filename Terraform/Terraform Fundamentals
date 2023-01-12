@@ -1,8 +1,30 @@
+Important notes"
+- Terraform enables you to safely and predictably create, change, and improve infrastructure.
+- With Terraform, you can create your own custom provider plugins.
+
 Task 1. Verifying Terraform installation
 - Open a new Cloud Shell tab, and verify that Terraform is available:
   "terraform"
+  
 Task 2. Build Infrastructure
+Confguration
 1. In Cloud Shell, create an empty configuration file named instance.tf with the following command:
   "touch instance.tf"
 2. Click Open Editor on the Cloud Shell toolbar.
 3. Click the instance.tf file and add the necessary content in it.  There is a sample .tf file located in the folder in this respository.
+4. In Cloud Shell, verify that your new file has been added and that there are no other *.tf files in your directory, because Terraform loads all of them:
+  "ls"
+Initialization
+1. Download and install the provider binary:
+  "terraform init"
+2. Create an execution plan:
+  "terraform plan"
+Apply Changes
+1. In the same directory as the instance.tf file you created, run this command:
+  "terraform apply"
+2. For this case the plan looks acceptable, so type yes at the confirmation prompt to proceed.
+   Executing the plan will take a few minutes becasue Terraform waits for the VM instance to become available.
+3. In the Google Cloud Console, on the Navigation menu, click Compute Engine > VM Instances.
+   The VM instances page opens and you'll see the VM instance you just created in the VM instances list.
+4. In Cloud Shell, inspect the current state:
+   "terraform show"
