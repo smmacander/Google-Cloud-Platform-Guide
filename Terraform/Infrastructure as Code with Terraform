@@ -37,3 +37,6 @@ Task 3. Create resource dependencies
   terraform apply
   Assigning a static IP address
     1. Now add to your configuration by assigning a static IP to the VM instance in main.tf. (In sample file.)
+    2. Next, run terraform plan:
+       terraform plan
+    3. Update the network_interfae configuration for your instance like in the sample file.
