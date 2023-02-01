@@ -16,3 +16,8 @@ Task 1. Build Infrastructure
 Task 2. Change Infrastructure
   Adding resources
     1. In the editor, add a compute instance resource to main.tf. (In sample file, post comment).
+    2. Now run terraform apply to create the compute instance:
+       terraform apply
+    3. Once again, answer yes to the confirmation prompt.
+  Changing resources
+    1. Add a tags argument to your "vm_instance" so that it looks like the main.tf file (commented out section).
