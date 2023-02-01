@@ -6,5 +6,13 @@ Task 1. Build Infrastructure
   Initialization
   - Initialize your new Terraform configuration by running the terraform init command in the same directory as your main.tf file:
     terraform init
-  Creating Resources
-  1. 
+  Creating resources
+    1. Apply your configuration now by running the command terraform apply:
+       terraform apply
+    2. The plan looks acceptable here, so type yes at the confirmation prompt to proceed.
+    3. In the Console, from the Navigation menu, navigate to VPC Network. You will see the terraform-network has been provisioned. 
+    4. In Cloud Shell run the terraform show command to inspect the current state:
+       terraform show
+Task 2. Change Infrastructure
+  Adding resources
+    1. In the editor, add a compute instance resource to main.tf. (In sample file, post comment).
