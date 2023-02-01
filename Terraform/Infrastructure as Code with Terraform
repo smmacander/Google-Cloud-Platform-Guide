@@ -1,0 +1,10 @@
+Task 1. Build Infrastructure
+  1. Create the main.tf file:
+     touch main.tf
+  2. Click the open editor button on the toolbar of Cloud Shell.
+  3. In the Editor, edit the main.tf file.  A sample main.tf file is included within this repository.
+  Initialization
+  - Initialize your new Terraform configuration by running the terraform init command in the same directory as your main.tf file:
+    terraform init
+  Creating Resources
+  1. 
