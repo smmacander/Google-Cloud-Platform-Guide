@@ -25,6 +25,8 @@ resource "google_compute_instance" "vm_instance" {
   boot_disk {
     initialize_params {
       image = "debian-cloud/debian-11"
+      # Below for 'Destructive changes' section
+      #image = "cos-cloud/cos-stable"
     }
   }
   network_interface {
