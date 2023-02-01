@@ -40,3 +40,9 @@ Task 3. Create resource dependencies
     2. Next, run terraform plan:
        terraform plan
     3. Update the network_interfae configuration for your instance like in the sample file.
+    4. Run terraform plan again, but this time, save the plane:
+       terraform plan -out static_ip
+    5. Run terraform apply "static_ip" to see how Terraform plans to apply this change:
+       terraform apply "static_ip"
+  Implicit and explicit dependencies
+    1. Add a Cloud Storage bucket and an instance with an explicit dependency on the bucket by adding noted section in the sample file to main.tf.
