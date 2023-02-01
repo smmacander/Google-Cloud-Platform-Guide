@@ -23,6 +23,17 @@ Task 2. Change Infrastructure
     1. Add a tags argument to your "vm_instance" so that it looks like the main.tf file (commented out section).
     2. Run terraform apply again to update the instance:
        terraform apply
-    3. The prefix ~ means that Terraform will update the resource in place. Type in yes.
+    3. The prefix ~ means that Terraform will update the resource in place. You can go and apply this change now by responding yes, and Terraform will add the tags to your instance.
   Destructive changes
     1. Edit the boot disk block inside the vm_instance resource in your configuration file and change it to the commented out section in the main.tf file.
+    2. Now run terraform apply again to see how Terraform will apply this change to the existing resources:
+       terraform apply
+    3. Once again, Terraform prompts for approval of the execution plan before proceeding. Answer yes to execute the planned steps.
+  Destroy infrastructure
+    - Try the terraform destroy command. Answer yes to execute this plan and destroy the infrastructure:
+      terraform destroy
+Task 3. Create resource dependencies
+- Recreate your network and instance. After you respond to the prompt with yes, the resouces will be created:
+  terraform apply
+  Assigning a static IP address
+    1. Now add to your configuration by assigning a static IP to the VM instance in main.tf. (In sample file.)
