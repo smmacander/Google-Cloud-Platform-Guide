@@ -20,8 +20,12 @@ resource "google_compute_network" "vpc_network" {
 resource "google_compute_instance" "vm_instance" {
   name = "terraform-instance"
   machine_type = "f1-micro"
-  #  Below for 'Changing resources' section
+  #  Below for 'Changing resources' section and after
   #tags = ["web", "dev"]
+  # Below for 'Defining a provisioner' section
+  #provisioner "local-exec" {
+  #  command = "echo ${google_compute_instance.vm_instance.name}: ${google_compute_instance.vm_instance.network_interface[0].access_config[0].nat_ip} >> ip_address.txt"
+  #}
   boot_disk {
     initialize_params {
       image = "debian-cloud/debian-11"
