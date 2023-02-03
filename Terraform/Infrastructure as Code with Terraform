@@ -45,4 +45,12 @@ Task 3. Create resource dependencies
     5. Run terraform apply "static_ip" to see how Terraform plans to apply this change:
        terraform apply "static_ip"
   Implicit and explicit dependencies
-    1. Add a Cloud Storage bucket and an instance with an explicit dependency on the bucket by adding noted section in the sample file to main.tf:
+    1. Add a Cloud Storage bucket and an instance with an explicit dependency on the bucket by adding noted section in the sample file to main.tf.
+    2. Now run terraform plan and terraform apply to see these changes in action:
+       terraform plan
+       terraform apply
+    3. Before moving on, remove these new resources from your configuration and run terraform apply once again to destroy them.
+       You won't use the bucket or the second instance any further.
+ Task 4. Provision infrastructure
+  Defining a provisioner
+    1. To define a provisioner, modufy the resource block defining the first vm_instance in your configuration to look as demonstrated in the main.tf file.
