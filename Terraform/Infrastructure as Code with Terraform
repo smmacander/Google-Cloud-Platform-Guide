@@ -54,3 +54,10 @@ Task 3. Create resource dependencies
  Task 4. Provision infrastructure
   Defining a provisioner
     1. To define a provisioner, modufy the resource block defining the first vm_instance in your configuration to look as demonstrated in the main.tf file.
+    2. Run terraform apply:
+       terraform apply
+    3. Use terraform taint to tell Terraform to recreate the instance:
+       terraform taint google_compute_instance.vm_instance
+    4. Run terraform apply now:
+       terraform apply
+    5. Verify everything worked by looking at the contents of the ip_address.txt file.
