@@ -9,6 +9,7 @@ Task 1. Use modules from the Registry
   2. On the Cloud Shell toolbar, click Open Editor.
      To switch between Cloud Shell and the code editor, clcik Open Editor or Open Terminal as required, or click Open in a new window to leave the Editor open in a separate tab.
   3. In the editor, navigate to terraform-google-network/examples/simple_project, and open the main.tf file.
+     Your main.tf configuration will look like the main.tf in the current directory.
   Set values for module input variables
   - Within the module "test-vpc-module" block, review the input variables you are setting. 
     Each of these input variables is documented in the Terraform Registry.
@@ -33,4 +34,7 @@ Task 1. Use modules from the Registry
       description = "The name of the VPC network being created"
       default     = "example-vpc"
      }
+  Define root output values
+  - Navigate to the outputs.tf file inside of your configuration's directory.
+    Verify that the file contains the items in the guide's outputs.tf file.
     
