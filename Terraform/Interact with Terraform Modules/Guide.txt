@@ -69,3 +69,4 @@ Task 2. Build a module
      Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and limitations under the License.
   5. Add the Cloud Storage bucket resource show in the example website.tf file to your website.tf file inside the modules/gcs-static-website-bucket directory.
+  6. Navigate to the variables.tf file in your module and add the code given in the example variables.tf file.
