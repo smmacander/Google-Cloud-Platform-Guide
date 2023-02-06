@@ -7,4 +7,30 @@ Task 1. Use modules from the Registry
      cd terraform-google-network
      git checkout tags/v3.3.0 -b v3.3.0
   2. On the Cloud Shell toolbar, click Open Editor.
+     To switch between Cloud Shell and the code editor, clcik Open Editor or Open Terminal as required, or click Open in a new window to leave the Editor open in a separate tab.
+  3. In the editor, navigate to terraform-google-network/examples/simple_project, and open the main.tf file.
+  Set values for module input variables
+  - Within the module "test-vpc-module" block, review the input variables you are setting. 
+    Each of these input variables is documented in the Terraform Registry.
+    The required inputs for this module are:
+    - network_name: The name of the network being created
+    - project_id: The ID of the project where this VPC will be created
+    - subnets: The list of subnets being created
+  Define root input variables
+  1. To retrieve your Project ID, run the following command in Cloud Shell:
+     gcloud config list --format 'value(core.project)'
+  2. In the Editor, still in the same directory, navigate to variables.tf.
+  3. Fill in the variable project_id with the output of the previous command.
+     You must follow the format below and set the default value for the variable:
+     variable "project_id" {
+      description = "The project ID to host the network in"
+      default     = "FILL IN YOUR PROJECT ID HERE"
+     }
+  4. In variables.tf, fill in the variable network_name.
+     You can use the name example-vpc or any other name you'd like.
+     You must follow the format below and set the default value for the variable:
+     variable "network_name" {
+      description = "The name of the VPC network being created"
+      default     = "example-vpc"
+     }
     
