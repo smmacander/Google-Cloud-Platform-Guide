@@ -70,3 +70,62 @@ Task 2. Build a module
      See the License for the specific language governing permissions and limitations under the License.
   5. Add the Cloud Storage bucket resource show in the example website.tf file to your website.tf file inside the modules/gcs-static-website-bucket directory.
   6. Navigate to the variables.tf file in your module and add the code given in the example variables.tf file.
+  7. Add an output to your module in the outputs.tf file inside your module:
+     output "bucket" {
+      description = "The created storage bucket"
+      value       = google_storage_bucket.bucket
+     }
+  8. Return to the main.tf in your root directory and add a reference to the new module:
+     module "gcs-static-website-bucket" {
+      source = "./modules/gcs-static-website-bucket"
+      name       = var.name
+      project_id = var.project_id
+      location   = "us-east1"
+      lifecycle_rules = [{
+        action = {
+          type = "Delete"
+        }
+        condition = {
+          age        = 365
+          with_state = "ANY"
+        }
+      }]
+     }
+  9. In your home directory, create an outputs.tf file for your root module:
+     cd ~
+     touch outputs.tf
+ 10. Add the following code in the outputs.tf file:
+     output "bucket-name" {
+      description = "Bucket names."
+      value       = "module.gcs-static-website-bucket.bucket"
+     }
+ 11. In your home directory, create a variables.tf file:
+     touch variables.tf
+ 12. Add the following code to the variables.tf file and define the variables project_id and name:
+     variable "project_id" {
+      description = "The ID of the project in which to provision resources."
+      type        = string
+      default     = "FILL IN YOUR PROJECT ID HERE"
+     }
+     variable "name" {
+      description = "Name of the buckets to create."
+      type        = string
+      default     = "FILL IN YOUR (UNIQUE) BUCKET NAME HERE"
+     }
+  Install the local module
+  1. Install the module:
+     terraform init
+  2. Provision your bucket:
+     terraform apply
+  3. Respond yes to the prompt. Your bucket and other resources will be provisioned.
+  Upload files to the bucket
+  1. Download the sample contents to your home directory:
+     cd ~
+     curl https://raw.githubusercontent.com/hashicorp/learn-terraform-modules/master/modules/aws-s3-static-website-bucket/www/index.html > index.html
+     curl https://raw.githubusercontent.com/hashicorp/learn-terraform-modules/blob/master/modules/aws-s3-static-website-bucket/www/error.html > error.html
+  2. Copy the files over to the bucket, replacing YOUR-BUCKET-NAME with the name of your storage bucket:
+     gsutil cp *.html gs://YOUR-BUCKET-NAME
+  3. In a new tab in your browser, go to the website https://storage.cloud.google.com/YOUR-BUCKET-NAME/index.html, replacing YOUR-BUCKET-NAME with the name of your storage bucket.
+  Clean up the website and infrastructure
+  - Destroy your Terraform resources
+    terraform destroy
