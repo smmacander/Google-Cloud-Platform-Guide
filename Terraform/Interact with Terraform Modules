@@ -1,0 +1,10 @@
+Task 1. Use modules from the Registry
+- Open the Terraform Registry page for the Terraform Network module in a new browser tab or window.
+  https://registry.terraform.io/modules/terraform-google-modules/network/google/3.3.0
+  Create a Terraform configuration
+  1. To start, run the following commmands in Cloud Shell to clone the example simple project form the Google Terraform modules GitHub repository and switch to the v3.3.0 branch:
+     git clone https://github.com/terraform-google-modules/terraform-google-network
+     cd terraform-google-network
+     git checkout tags/v3.3.0 -b v3.3.0
+  2. On the Cloud Shell toolbar, click Open Editor.
+    
